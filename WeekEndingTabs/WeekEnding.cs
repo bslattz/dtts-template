@@ -36,8 +36,8 @@ namespace WeekEndingTabs
 			var sheetDateAddress = _wb.Names.Item("closingDate").RefersToRange.Address;
 			var days = _wb. Names.Item("daysOfWeek").RefersToRange.ToArray<string>();
 			var dates =_wb. Names.Item("dayDates").RefersToRange.ToArray<DateTime>();
-			var sheetNames = _wb. Names.Item("datedSheets").RefersToRange.ToArray<string>();
-			var sheetNamesFmt = _wb. Names.Item("datedSheetsFmt").RefersToRange.ToArray<string>();
+			var sheetTags = _wb. Names.Item("datedSheets").RefersToRange.ToArray<string>();
+			var sheetNames = _wb. Names.Item("datedSheetsFmt").RefersToRange.ToArray<string>();
 
 			var allSheetsHosted = _wb.Worksheets
 				.Cast<Excel.Worksheet>()
@@ -47,20 +47,37 @@ namespace WeekEndingTabs
 			var allSheets = _wb.Sheets.Cast<object>().ToArray();
 			if (allSheets.Length == 0) throw new InvalidRangeException("Expecting sheets named Mon, ..., Sun, Summary");
 
+			// Select sheets to be labeled with date info from all sheets using sheetTags
+			//   then update the Sheet names to be <sheetTag><date info>
+			//   then select the day sheets and
+			//     order them to match the calculated sheetNames range and
+			//     write the new dates in sheetDateAddress
+			sheetTags.Join<string, Worksheet, string, SheetsCollection.Record>(
+					allSheetsHosted,
+					tag => tag, sheet => sheet.Name,
+					(tag, sheet) => new SheetsCollection.Record {Key = tag, Sheet = sheet},
+					daySheets.SheetToTagEquivalence)
+				.Select((r, i) =>
+				{
+					r.Sheet.Name = sheetNames[i];
+					return r;
+				})
+				.ToList();
+
 			daySheets
-				.Add(sheetNames.Join<string, Worksheet, string, SheetsCollection.Record>(
+				.Add(sheetTags.Join<string, Worksheet, string, SheetsCollection.Record>(
 						allSheetsHosted, 
 						name => name, sheet => sheet.Name, 
 						(name, sheet) => new SheetsCollection.Record { Key = name, Sheet = sheet},
-						daySheets.Comparer)
-					.Select((r, i) => { r.Sheet.Name = sheetNamesFmt[i]; return r; })
+						daySheets.SheetToTagEquivalence)
+					.Select((r, i) => { r.Sheet.Name = sheetNames[i]; return r; })
 					.ToList())
-				.Sort(sheetNames);
+				.Sort(sheetTags);
 
 			days.Join<string, string, string, Worksheet>(daySheets.Keys,
 				name => name, sheet => sheet,
 				(name, sheet) => daySheets[name],
-				daySheets.Comparer)
+				daySheets.SheetToTagEquivalence)
 				.Select((s, i) =>
 				{
 					s.Range[sheetDateAddress].Value2 = dates[i];
@@ -104,7 +121,7 @@ namespace WeekEndingTabs
 				return this;
 			}
 
-			public new readonly IEqualityComparer<object> Comparer = new SheetComparer();
+			public new readonly IEqualityComparer<object> SheetToTagEquivalence = new SheetComparer();
 
 			private class SheetComparer : IEqualityComparer<object>
 			{
