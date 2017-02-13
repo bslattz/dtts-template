@@ -9,10 +9,13 @@
     <RootNamespace>WeekEndingTabs</RootNamespace>
     <AssemblyName>WeekEndingTabs</AssemblyName>
     <VSTO_HostDocumentName>DTTS TEMPLATE AUTO.xltx</VSTO_HostDocumentName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <OfficeApplication>Excel</OfficeApplication>
     <ProjectGuid>{6F9F51C9-6439-4AED-B928-AC38D92699C8}</ProjectGuid>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
+    <SolutionID>a7c69576-e095-424a-a0bd-b144f6e8b406</SolutionID>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
@@ -22,13 +25,11 @@
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <IsWebBootstrapper>False</IsWebBootstrapper>
     <ProductName>WeekEndingTabs</ProductName>
     <PublisherName />
     <SupportUrl />
     <FriendlyName>WeekEndingTabs</FriendlyName>
     <OfficeApplicationDescription />
-    <SolutionID>a7c69576-e095-424a-a0bd-b144f6e8b406</SolutionID>
   </PropertyGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -64,7 +65,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <DefineConstants>VSTO40</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <!--
@@ -202,6 +203,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Sheet11.resx">
       <DependentUpon>Sheet11.cs</DependentUpon>
