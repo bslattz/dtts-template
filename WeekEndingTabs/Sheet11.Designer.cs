@@ -17,6 +17,12 @@ namespace WeekEndingTabs {
     [global::System.Security.Permissions.PermissionSetAttribute(global::System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
     public sealed partial class Sheet11 : Microsoft.Office.Tools.Excel.WorksheetBase {
         
+        internal Microsoft.Office.Tools.Excel.NamedRange closingDay;
+        
+        internal Microsoft.Office.Tools.Excel.NamedRange datedSheets;
+        
+        internal Microsoft.Office.Tools.Excel.NamedRange datedSheetsFmt;
+        
         internal Microsoft.Office.Tools.Excel.NamedRange dayDates;
         
         internal Microsoft.Office.Tools.Excel.NamedRange dayDatesRaw;
@@ -34,10 +40,6 @@ namespace WeekEndingTabs {
         internal Microsoft.Office.Tools.Excel.NamedRange prevWEDaye;
         
         internal Microsoft.Office.Tools.Excel.NamedRange selectedDate;
-        
-        internal Microsoft.Office.Tools.Excel.NamedRange datedSheets;
-        
-        internal Microsoft.Office.Tools.Excel.NamedRange datedSheetsFmt;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         private global::System.Object missing = global::System.Type.Missing;
@@ -136,6 +138,9 @@ namespace WeekEndingTabs {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void BeginInitialization() {
             this.BeginInit();
+            this.closingDay.BeginInit();
+            this.datedSheets.BeginInit();
+            this.datedSheetsFmt.BeginInit();
             this.dayDates.BeginInit();
             this.dayDatesRaw.BeginInit();
             this.daysOfWeek.BeginInit();
@@ -145,8 +150,6 @@ namespace WeekEndingTabs {
             this.prevWEDate.BeginInit();
             this.prevWEDaye.BeginInit();
             this.selectedDate.BeginInit();
-            this.datedSheets.BeginInit();
-            this.datedSheetsFmt.BeginInit();
         }
         
         /// 
@@ -154,8 +157,6 @@ namespace WeekEndingTabs {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void EndInitialization() {
-            this.datedSheetsFmt.EndInit();
-            this.datedSheets.EndInit();
             this.selectedDate.EndInit();
             this.prevWEDaye.EndInit();
             this.prevWEDate.EndInit();
@@ -165,6 +166,9 @@ namespace WeekEndingTabs {
             this.daysOfWeek.EndInit();
             this.dayDatesRaw.EndInit();
             this.dayDates.EndInit();
+            this.datedSheetsFmt.EndInit();
+            this.datedSheets.EndInit();
+            this.closingDay.EndInit();
             this.EndInit();
         }
         
@@ -173,6 +177,9 @@ namespace WeekEndingTabs {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void InitializeControls() {
+            this.closingDay = Globals.Factory.CreateNamedRange(null, null, "closingDay", "closingDay", this);
+            this.datedSheets = Globals.Factory.CreateNamedRange(null, null, "datedSheets", "datedSheets", this);
+            this.datedSheetsFmt = Globals.Factory.CreateNamedRange(null, null, "datedSheetsFmt", "datedSheetsFmt", this);
             this.dayDates = Globals.Factory.CreateNamedRange(null, null, "dayDates", "dayDates", this);
             this.dayDatesRaw = Globals.Factory.CreateNamedRange(null, null, "dayDatesRaw", "dayDatesRaw", this);
             this.daysOfWeek = Globals.Factory.CreateNamedRange(null, null, "daysOfWeek", "daysOfWeek", this);
@@ -182,8 +189,6 @@ namespace WeekEndingTabs {
             this.prevWEDate = Globals.Factory.CreateNamedRange(null, null, "prevWEDate", "prevWEDate", this);
             this.prevWEDaye = Globals.Factory.CreateNamedRange(null, null, "prevWEDaye", "prevWEDaye", this);
             this.selectedDate = Globals.Factory.CreateNamedRange(null, null, "selectedDate", "selectedDate", this);
-            this.datedSheets = Globals.Factory.CreateNamedRange(null, null, "datedSheets", "datedSheets", this);
-            this.datedSheetsFmt = Globals.Factory.CreateNamedRange(null, null, "datedSheetsFmt", "datedSheetsFmt", this);
         }
         
         /// 
@@ -191,53 +196,6 @@ namespace WeekEndingTabs {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void InitializeComponents() {
-            // 
-            // dayDates
-            // 
-            this.dayDates.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // dayDatesRaw
-            // 
-            this.dayDatesRaw.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // daysOfWeek
-            // 
-            this.daysOfWeek.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // daysOfWeekFmt
-            // 
-            this.daysOfWeekFmt.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // daysOfWeekRaw
-            // 
-            this.daysOfWeekRaw.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // lastDayOfWeek
-            // 
-            this.lastDayOfWeek.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // prevWEDate
-            // 
-            this.prevWEDate.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // prevWEDaye
-            // 
-            this.prevWEDaye.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // selectedDate
-            // 
-            this.selectedDate.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // datedSheets
-            // 
-            this.datedSheets.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // datedSheetsFmt
-            // 
-            this.datedSheetsFmt.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // Sheet11
-            // 
         }
         
         /// 
@@ -252,8 +210,6 @@ namespace WeekEndingTabs {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         protected override void OnShutdown() {
-            this.datedSheetsFmt.Dispose();
-            this.datedSheets.Dispose();
             this.selectedDate.Dispose();
             this.prevWEDaye.Dispose();
             this.prevWEDate.Dispose();
@@ -263,6 +219,9 @@ namespace WeekEndingTabs {
             this.daysOfWeek.Dispose();
             this.dayDatesRaw.Dispose();
             this.dayDates.Dispose();
+            this.datedSheetsFmt.Dispose();
+            this.datedSheets.Dispose();
+            this.closingDay.Dispose();
             base.OnShutdown();
         }
     }

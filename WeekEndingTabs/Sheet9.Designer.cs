@@ -19,6 +19,8 @@ namespace WeekEndingTabs {
         
         internal Microsoft.Office.Tools.Excel.NamedRange closingDate;
         
+        internal Microsoft.Office.Tools.Excel.NamedRange Sheet9_closingDay;
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         private global::System.Object missing = global::System.Type.Missing;
         
@@ -117,6 +119,7 @@ namespace WeekEndingTabs {
         private void BeginInitialization() {
             this.BeginInit();
             this.closingDate.BeginInit();
+            this.Sheet9_closingDay.BeginInit();
         }
         
         /// 
@@ -124,6 +127,7 @@ namespace WeekEndingTabs {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void EndInitialization() {
+            this.Sheet9_closingDay.EndInit();
             this.closingDate.EndInit();
             this.EndInit();
         }
@@ -134,6 +138,7 @@ namespace WeekEndingTabs {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void InitializeControls() {
             this.closingDate = Globals.Factory.CreateNamedRange(null, null, "closingDate", "closingDate", this);
+            this.Sheet9_closingDay = Globals.Factory.CreateNamedRange(null, null, "Sheet9!closingDay", "Sheet9_closingDay", this);
         }
         
         /// 
@@ -155,6 +160,7 @@ namespace WeekEndingTabs {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "15.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         protected override void OnShutdown() {
+            this.Sheet9_closingDay.Dispose();
             this.closingDate.Dispose();
             base.OnShutdown();
         }

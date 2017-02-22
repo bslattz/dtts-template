@@ -8,48 +8,39 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>WeekEndingTabs</RootNamespace>
     <AssemblyName>WeekEndingTabs</AssemblyName>
-    <VSTO_HostDocumentName>DTTS TEMPLATE AUTO.xltx</VSTO_HostDocumentName>
+    <VSTO_HostDocumentName>DTTS TEMPLATE AUTO.XP.xls</VSTO_HostDocumentName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <OfficeApplication>Excel</OfficeApplication>
     <ProjectGuid>{6F9F51C9-6439-4AED-B928-AC38D92699C8}</ProjectGuid>
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <SolutionID>a7c69576-e095-424a-a0bd-b144f6e8b406</SolutionID>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>WeekEndingTabs</ProductName>
-    <PublisherName />
+    <PublisherName>Robert Slattery</PublisherName>
     <SupportUrl />
     <FriendlyName>WeekEndingTabs</FriendlyName>
     <OfficeApplicationDescription />
   </PropertyGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
-      <Visible>False</Visible>
-      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <PropertyGroup>
-    <VSTO_EmbedTypeLibraryInAssembly>false</VSTO_EmbedTypeLibraryInAssembly>
+    <VSTO_EmbedTypeLibraryInAssembly>True</VSTO_EmbedTypeLibraryInAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +50,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -67,134 +59,126 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>VSTO40</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
   -->
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
-      <Private>False</Private>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
-      <Private>False</Private>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <Private>False</Private>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chart1.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Chart1.Designer.cs">
       <DependentUpon>Chart1.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sheet1.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet1.Designer.cs">
       <DependentUpon>Sheet1.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet10.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet10.Designer.cs">
       <DependentUpon>Sheet10.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet11.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet11.Designer.cs">
       <DependentUpon>Sheet11.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet2.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet2.Designer.cs">
       <DependentUpon>Sheet2.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet3.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet3.Designer.cs">
       <DependentUpon>Sheet3.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet4.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet4.Designer.cs">
       <DependentUpon>Sheet4.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet5.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet5.Designer.cs">
       <DependentUpon>Sheet5.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet6.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet6.Designer.cs">
       <DependentUpon>Sheet6.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet7.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet7.Designer.cs">
       <DependentUpon>Sheet7.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet8.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet8.Designer.cs">
       <DependentUpon>Sheet8.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet9.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="Sheet9.Designer.cs">
       <DependentUpon>Sheet9.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="ThisWorkbook.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.xltx</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
     </Compile>
     <Compile Include="ThisWorkbook.Designer.cs">
       <DependentUpon>ThisWorkbook.Designer.xml</DependentUpon>
     </Compile>
-    <Compile Include="WeekEnding.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -205,10 +189,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Sheet11.resx">
-      <DependentUpon>Sheet11.cs</DependentUpon>
+    <EmbeddedResource Include="ThisWorkbook.resx">
+      <DependentUpon>ThisWorkbook.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DTTS TEMPLATE AUTO.xltx" />
+    <None Include="DTTS TEMPLATE AUTO.XP.xls" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -284,6 +268,12 @@
       <DependentUpon>Chart1.cs</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeekEnding\WeekEnding.csproj">
+      <Project>{0b7626be-8862-4138-9fb5-d47b3153ffdb}</Project>
+      <Name>WeekEnding</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -305,21 +295,21 @@
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
-        <ProjectProperties HostName="DTTS TEMPLATE AUTO.xltx" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLT" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files (x86)\Microsoft Office\root\Office16\Excel.exe" DebugInfoCommandLine="/t /x &quot;[$OUTPUT]DTTS TEMPLATE AUTO.xltx&quot;" />
-        <Host Name="Excel Document" Path=".\DTTS TEMPLATE AUTO.xltx" GeneratedCodeNamespace="WeekEndingTabs">
-          <HostItem Name="Chart1" Code="Chart1.cs" CanonicalName="Chart1" DisplayName="Chart1" Blueprint="Chart1.Designer.xml" GeneratedCode="Chart1.Designer.cs" />
-          <HostItem Name="Sheet1" Code="Sheet1.cs" CanonicalName="Sheet1" DisplayName="Mon 20" Blueprint="Sheet1.Designer.xml" GeneratedCode="Sheet1.Designer.cs" />
-          <HostItem Name="Sheet10" Code="Sheet10.cs" CanonicalName="Sheet10" DisplayName="DAILY TOTALS" Blueprint="Sheet10.Designer.xml" GeneratedCode="Sheet10.Designer.cs" />
-          <HostItem Name="Sheet11" Code="Sheet11.cs" CanonicalName="Sheet11" DisplayName="config" Blueprint="Sheet11.Designer.xml" GeneratedCode="Sheet11.Designer.cs" />
-          <HostItem Name="Sheet2" Code="Sheet2.cs" CanonicalName="Sheet2" DisplayName="Tue 21" Blueprint="Sheet2.Designer.xml" GeneratedCode="Sheet2.Designer.cs" />
-          <HostItem Name="Sheet3" Code="Sheet3.cs" CanonicalName="Sheet3" DisplayName="Wed 22" Blueprint="Sheet3.Designer.xml" GeneratedCode="Sheet3.Designer.cs" />
-          <HostItem Name="Sheet4" Code="Sheet4.cs" CanonicalName="Sheet4" DisplayName="Thu 23" Blueprint="Sheet4.Designer.xml" GeneratedCode="Sheet4.Designer.cs" />
-          <HostItem Name="Sheet5" Code="Sheet5.cs" CanonicalName="Sheet5" DisplayName="Fri 24" Blueprint="Sheet5.Designer.xml" GeneratedCode="Sheet5.Designer.cs" />
-          <HostItem Name="Sheet6" Code="Sheet6.cs" CanonicalName="Sheet6" DisplayName="Sat 25" Blueprint="Sheet6.Designer.xml" GeneratedCode="Sheet6.Designer.cs" />
-          <HostItem Name="Sheet7" Code="Sheet7.cs" CanonicalName="Sheet7" DisplayName="Sun 26" Blueprint="Sheet7.Designer.xml" GeneratedCode="Sheet7.Designer.cs" />
-          <HostItem Name="Sheet8" Code="Sheet8.cs" CanonicalName="Sheet8" DisplayName="CHEQUES" Blueprint="Sheet8.Designer.xml" GeneratedCode="Sheet8.Designer.cs" />
-          <HostItem Name="Sheet9" Code="Sheet9.cs" CanonicalName="Sheet9" DisplayName="Summary 200217 - 260217" Blueprint="Sheet9.Designer.xml" GeneratedCode="Sheet9.Designer.cs" />
-          <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
+        <ProjectProperties HostName="DTTS TEMPLATE AUTO.XP.xls" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLT" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files (x86)\Microsoft Office\root\Office16\Excel.exe" DebugInfoCommandLine="/x &quot;[$OUTPUT]DTTS TEMPLATE AUTO.XP.xls&quot;" />
+        <Host Name="Excel Document" Path=".\DTTS TEMPLATE AUTO.XP.xls" GeneratedCodeNamespace="WeekEndingTabs" PublishedHash="B1EC462202A96F4CDDF28B2157CFB8151B7792FE">
+          <HostItem Name="Chart1" Code="Chart1.cs" CanonicalName="Chart1" PublishedHash="D92C43DB724F51EACC93F705D3484732D9560356" DisplayName="Chart1" Blueprint="Chart1.Designer.xml" GeneratedCode="Chart1.Designer.cs" />
+          <HostItem Name="Sheet1" Code="Sheet1.cs" CanonicalName="Sheet1" PublishedHash="64EC80CE7E755D8DF44DD9FA77ABFE1D9169AF2C" DisplayName="Mon 20" Blueprint="Sheet1.Designer.xml" GeneratedCode="Sheet1.Designer.cs" />
+          <HostItem Name="Sheet10" Code="Sheet10.cs" CanonicalName="Sheet10" PublishedHash="B2E41A99F387254A02A60D466B5C9BC52DF08FD2" DisplayName="DAILY TOTALS" Blueprint="Sheet10.Designer.xml" GeneratedCode="Sheet10.Designer.cs" />
+          <HostItem Name="Sheet11" Code="Sheet11.cs" CanonicalName="Sheet11" PublishedHash="CA9DE861DD67931A6A054E7568A5DF3DD809E988" DisplayName="config" Blueprint="Sheet11.Designer.xml" GeneratedCode="Sheet11.Designer.cs" />
+          <HostItem Name="Sheet2" Code="Sheet2.cs" CanonicalName="Sheet2" PublishedHash="E214BD2298C4C0554DDC8762B4EDCB829B3085B3" DisplayName="Tue 21" Blueprint="Sheet2.Designer.xml" GeneratedCode="Sheet2.Designer.cs" />
+          <HostItem Name="Sheet3" Code="Sheet3.cs" CanonicalName="Sheet3" PublishedHash="5E3C39AED794A225BB528E8DFA0E77C85970DAE4" DisplayName="Wed 22" Blueprint="Sheet3.Designer.xml" GeneratedCode="Sheet3.Designer.cs" />
+          <HostItem Name="Sheet4" Code="Sheet4.cs" CanonicalName="Sheet4" PublishedHash="4E887E91F5552BCAE814EF4A17A3696E4D33B463" DisplayName="Thu 23" Blueprint="Sheet4.Designer.xml" GeneratedCode="Sheet4.Designer.cs" />
+          <HostItem Name="Sheet5" Code="Sheet5.cs" CanonicalName="Sheet5" PublishedHash="CF839F7C893B734A0729CC258DA5A3C07C1472DD" DisplayName="Fri 24" Blueprint="Sheet5.Designer.xml" GeneratedCode="Sheet5.Designer.cs" />
+          <HostItem Name="Sheet6" Code="Sheet6.cs" CanonicalName="Sheet6" PublishedHash="32AFA5DE347A810947C0430D42F7F7E1103EFBAC" DisplayName="Sat 25" Blueprint="Sheet6.Designer.xml" GeneratedCode="Sheet6.Designer.cs" />
+          <HostItem Name="Sheet7" Code="Sheet7.cs" CanonicalName="Sheet7" PublishedHash="338D880C1B0C769BEC9053A3DCA3F4ABA40F1166" DisplayName="Sun 26" Blueprint="Sheet7.Designer.xml" GeneratedCode="Sheet7.Designer.cs" />
+          <HostItem Name="Sheet8" Code="Sheet8.cs" CanonicalName="Sheet8" PublishedHash="018B04FBF937BFF6B401C8D1B32A570F4F9F4B88" DisplayName="CHEQUES" Blueprint="Sheet8.Designer.xml" GeneratedCode="Sheet8.Designer.cs" />
+          <HostItem Name="Sheet9" Code="Sheet9.cs" CanonicalName="Sheet9" PublishedHash="14E169BC8C67EA2B4EBBE496BBF6804A55BAB83F" DisplayName="Summary 200217 - 260217" Blueprint="Sheet9.Designer.xml" GeneratedCode="Sheet9.Designer.cs" />
+          <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" PublishedHash="1D1C97AE4DDCBDBD51C778FEB4854619104743B2" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
         </Host>
       </FlavorProperties>
     </VisualStudio>

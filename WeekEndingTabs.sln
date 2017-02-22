@@ -5,10 +5,13 @@ VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekEndingTabs", "WeekEndingTabs\WeekEndingTabs.csproj", "{6F9F51C9-6439-4AED-B928-AC38D92699C8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA605903-43A5-47CF-8338-CCE5D285CB99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekEnding", "WeekEnding\WeekEnding.csproj", "{0B7626BE-8862-4138-9FB5-D47B3153FFDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCustomControlLibrary", "WpfCustomControlLibrary\WpfCustomControlLibrary.csproj", "{43BDE7E9-5CF0-40F2-849D-F443FB443012}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -18,8 +21,19 @@ Global
 		{6F9F51C9-6439-4AED-B928-AC38D92699C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F9F51C9-6439-4AED-B928-AC38D92699C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F9F51C9-6439-4AED-B928-AC38D92699C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B7626BE-8862-4138-9FB5-D47B3153FFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7626BE-8862-4138-9FB5-D47B3153FFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7626BE-8862-4138-9FB5-D47B3153FFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7626BE-8862-4138-9FB5-D47B3153FFDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43BDE7E9-5CF0-40F2-849D-F443FB443012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43BDE7E9-5CF0-40F2-849D-F443FB443012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43BDE7E9-5CF0-40F2-849D-F443FB443012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43BDE7E9-5CF0-40F2-849D-F443FB443012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

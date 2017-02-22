@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools;
 using Worksheet = Microsoft.Office.Tools.Excel.Worksheet;
+using Factory = Microsoft.Office.Tools.Excel.Factory;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace WeekEndingTabs
+namespace WeekEnding
 {
-	class WeekEnding
+	public class WeekEnding
 	{
-		private readonly ThisWorkbook _wb;
+		private readonly Microsoft.Office.Tools.Excel.WorkbookBase _wb;
+		private readonly Factory _factory;
+		private bool _guard;
+		private DateTime[] _dates;
+		private Dictionary<string, Worksheet> _taggedSheets;
 
-		public WeekEnding(ThisWorkbook wb)
+		public WeekEnding(Microsoft.Office.Tools.Excel.WorkbookBase wb, Factory factory)
 		{
 			_wb = wb;
+			_factory = factory;
 			var configSheet = (Excel.Worksheet) wb.Sheets["config"];
 			if (configSheet == null) return;
 			((DocEvents_Event) configSheet).Calculate += Refresh;
@@ -24,23 +31,23 @@ namespace WeekEndingTabs
 			var updating = _wb.Application.ScreenUpdating;
 			_wb.Application.ScreenUpdating = false;
 			_update();
+            _wb.Application.Run("printState");
 			if(updating)
 				_wb.Application.ScreenUpdating = true;
 		}
-		private bool _guard;
 		private void _update ()
 		{
 			if (_guard) return;
 			var closingDateRange = _wb.Names.Item("closingDate").RefersToRange;
 			var sheetDateAddress = closingDateRange.Address;
 			var days = _wb. Names.Item("daysOfWeek").RefersToRange.ToArray<string>();
-			var dates =_wb. Names.Item("dayDates").RefersToRange.ToArray<DateTime>();
+			_dates =_wb. Names.Item("dayDates").RefersToRange.ToArray<DateTime>();
 			var sheetTags = _wb. Names.Item("datedSheets").RefersToRange.ToArray<string>();
 			var sheetNames = _wb. Names.Item("datedSheetsFmt").RefersToRange.ToArray<string>();
 
 			var allSheetsHosted = _wb.Worksheets
 				.Cast<Excel.Worksheet>()
-				.Select(s => Globals.Factory.GetVstoObject(s))
+				.Select(s => _factory.GetVstoObject(s))
 				.ToArray();
 
 			var allSheets = _wb.Sheets.Cast<object>().ToArray();
@@ -49,7 +56,7 @@ namespace WeekEndingTabs
 			// Select sheets to be labeled with date info from all sheets using sheetTags
 			//   then update the Sheet names to be <sheetTag><date info>
 			//   and store the results in a dictionary
-			var taggedSheets = sheetTags.Join(
+			_taggedSheets = sheetTags.Join(
 					allSheetsHosted,
 					tag => tag, sheet => sheet.Name,
 					(tag, sheet) => new {Key = tag, Sheet = sheet},
@@ -61,31 +68,47 @@ namespace WeekEndingTabs
 				})
 				.ToDictionary(r => r.Key, r => r.Sheet);
 
-			var actSht = Globals.ThisWorkbook.ActiveSheet as Excel.Worksheet;
+			var actSht = _wb.ActiveSheet as Excel.Worksheet;
 
 			// Select the day sheets and
 			//   order them to match the calculated sheetNames range and
 			//   write the new dates in sheetDateAddress
 			foreach (var s in 
-				days.Join<string, string, string, Worksheet>(taggedSheets.Keys,
+				days.Join<string, string, string, Worksheet>(_taggedSheets.Keys,
 					name => name, sheet => sheet,
-					(name, sheet) => taggedSheets[name],
+					(name, sheet) => _taggedSheets[name],
 					_sheetToTagEquivalence)
 				.Select((s, i) =>
 				{
 					if(i > 0)
-						taggedSheets[days[i]].Move(After: taggedSheets[days[i - 1]].InnerObject);
-					s.Range[sheetDateAddress].Value2 = dates[i];
-					return dates[i];
+						_taggedSheets[days[i]].Move(After: _taggedSheets[days[i - 1]].InnerObject);
+					s.Range[sheetDateAddress].Value2 = _dates[i];
+					return _dates[i];
 				})
 			)
 			// Update the closing date on the summary sheet in case the sheets were re-ordered
 			_guard = true;
-			closingDateRange.Value2 = dates.Last();
+			closingDateRange.Value2 = _dates.Last();
 			_guard = false;
 
 			actSht?.Activate();
 		}
+
+		public string DisplayTaggedSheets ()
+		{
+            if (_taggedSheets == null) return null;
+            var msg = new StringBuilder();
+			_taggedSheets.Aggregate(msg,
+				(m, r) => m.AppendLine($"{r.Key}\t{r.Value.Name}"));
+			return msg.ToString();
+		}
+
+		public string DisplayDates ()
+		{
+            if (_dates == null) return null;
+            return string.Join("\n", _dates.Select(d => d.ToString("dd/mm/yyy")));
+		}
+
 		private readonly IEqualityComparer<object> _sheetToTagEquivalence = new SheetComparer();
 		private class SheetComparer : IEqualityComparer<object>
 		{
