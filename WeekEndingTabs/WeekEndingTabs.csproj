@@ -8,7 +8,7 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>WeekEndingTabs</RootNamespace>
     <AssemblyName>WeekEndingTabs</AssemblyName>
-    <VSTO_HostDocumentName>DTTS TEMPLATE AUTO.XP.xls</VSTO_HostDocumentName>
+    <VSTO_HostDocumentName>DTTS TEMPLATE AUTO.XP.xlt</VSTO_HostDocumentName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <OfficeApplication>Excel</OfficeApplication>
@@ -18,11 +18,11 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>publish\</PublishUrl>
-    <InstallUrl />
+    <PublishUrl>C:\Users\Admin\Dropbox\Linda\addin\</PublishUrl>
+    <InstallUrl>\\ADMIN-PC\addin\</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
-    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
+    <ApplicationVersion>1.0.0.13</ApplicationVersion>
+    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
@@ -71,7 +71,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -101,80 +100,80 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chart1.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Chart1.Designer.cs">
       <DependentUpon>Chart1.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sheet1.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet1.Designer.cs">
       <DependentUpon>Sheet1.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet10.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet10.Designer.cs">
       <DependentUpon>Sheet10.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet11.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet11.Designer.cs">
       <DependentUpon>Sheet11.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet2.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet2.Designer.cs">
       <DependentUpon>Sheet2.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet3.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet3.Designer.cs">
       <DependentUpon>Sheet3.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet4.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet4.Designer.cs">
       <DependentUpon>Sheet4.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet5.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet5.Designer.cs">
       <DependentUpon>Sheet5.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet6.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet6.Designer.cs">
       <DependentUpon>Sheet6.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet7.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet7.Designer.cs">
       <DependentUpon>Sheet7.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet8.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet8.Designer.cs">
       <DependentUpon>Sheet8.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="Sheet9.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="Sheet9.Designer.cs">
       <DependentUpon>Sheet9.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="ThisWorkbook.cs">
-      <DependentUpon>DTTS TEMPLATE AUTO.XP.xls</DependentUpon>
+      <DependentUpon>DTTS TEMPLATE AUTO.XP.xlt</DependentUpon>
     </Compile>
     <Compile Include="ThisWorkbook.Designer.cs">
       <DependentUpon>ThisWorkbook.Designer.xml</DependentUpon>
@@ -192,7 +191,7 @@
     <EmbeddedResource Include="ThisWorkbook.resx">
       <DependentUpon>ThisWorkbook.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DTTS TEMPLATE AUTO.XP.xls" />
+    <None Include="DTTS TEMPLATE AUTO.XP.xlt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -295,12 +294,12 @@
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
-        <ProjectProperties HostName="DTTS TEMPLATE AUTO.XP.xls" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLT" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files (x86)\Microsoft Office\root\Office16\Excel.exe" DebugInfoCommandLine="/x &quot;[$OUTPUT]DTTS TEMPLATE AUTO.XP.xls&quot;" />
-        <Host Name="Excel Document" Path=".\DTTS TEMPLATE AUTO.XP.xls" GeneratedCodeNamespace="WeekEndingTabs" PublishedHash="B1EC462202A96F4CDDF28B2157CFB8151B7792FE">
+        <ProjectProperties HostName="DTTS TEMPLATE AUTO.XP.xlt" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLT" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files (x86)\Microsoft Office\root\Office16\Excel.exe" DebugInfoCommandLine="/t /x &quot;[$OUTPUT]DTTS TEMPLATE AUTO.XP.xlt&quot;" />
+        <Host Name="Excel Document" Path=".\DTTS TEMPLATE AUTO.XP.xlt" GeneratedCodeNamespace="WeekEndingTabs" PublishedHash="B1EC462202A96F4CDDF28B2157CFB8151B7792FE">
           <HostItem Name="Chart1" Code="Chart1.cs" CanonicalName="Chart1" PublishedHash="D92C43DB724F51EACC93F705D3484732D9560356" DisplayName="Chart1" Blueprint="Chart1.Designer.xml" GeneratedCode="Chart1.Designer.cs" />
-          <HostItem Name="Sheet1" Code="Sheet1.cs" CanonicalName="Sheet1" PublishedHash="64EC80CE7E755D8DF44DD9FA77ABFE1D9169AF2C" DisplayName="Mon 20" Blueprint="Sheet1.Designer.xml" GeneratedCode="Sheet1.Designer.cs" />
+          <HostItem Name="Sheet1" Code="Sheet1.cs" CanonicalName="Sheet1" PublishedHash="133607574DE181B858B5E65C784C45A070A55F61" DisplayName="Mon 20" Blueprint="Sheet1.Designer.xml" GeneratedCode="Sheet1.Designer.cs" />
           <HostItem Name="Sheet10" Code="Sheet10.cs" CanonicalName="Sheet10" PublishedHash="B2E41A99F387254A02A60D466B5C9BC52DF08FD2" DisplayName="DAILY TOTALS" Blueprint="Sheet10.Designer.xml" GeneratedCode="Sheet10.Designer.cs" />
-          <HostItem Name="Sheet11" Code="Sheet11.cs" CanonicalName="Sheet11" PublishedHash="CA9DE861DD67931A6A054E7568A5DF3DD809E988" DisplayName="config" Blueprint="Sheet11.Designer.xml" GeneratedCode="Sheet11.Designer.cs" />
+          <HostItem Name="Sheet11" Code="Sheet11.cs" CanonicalName="Sheet11" PublishedHash="FCEF60ED06D10F0F69883827C9ED1C76676E4072" DisplayName="config" Blueprint="Sheet11.Designer.xml" GeneratedCode="Sheet11.Designer.cs" />
           <HostItem Name="Sheet2" Code="Sheet2.cs" CanonicalName="Sheet2" PublishedHash="E214BD2298C4C0554DDC8762B4EDCB829B3085B3" DisplayName="Tue 21" Blueprint="Sheet2.Designer.xml" GeneratedCode="Sheet2.Designer.cs" />
           <HostItem Name="Sheet3" Code="Sheet3.cs" CanonicalName="Sheet3" PublishedHash="5E3C39AED794A225BB528E8DFA0E77C85970DAE4" DisplayName="Wed 22" Blueprint="Sheet3.Designer.xml" GeneratedCode="Sheet3.Designer.cs" />
           <HostItem Name="Sheet4" Code="Sheet4.cs" CanonicalName="Sheet4" PublishedHash="4E887E91F5552BCAE814EF4A17A3696E4D33B463" DisplayName="Thu 23" Blueprint="Sheet4.Designer.xml" GeneratedCode="Sheet4.Designer.cs" />
@@ -308,8 +307,8 @@
           <HostItem Name="Sheet6" Code="Sheet6.cs" CanonicalName="Sheet6" PublishedHash="32AFA5DE347A810947C0430D42F7F7E1103EFBAC" DisplayName="Sat 25" Blueprint="Sheet6.Designer.xml" GeneratedCode="Sheet6.Designer.cs" />
           <HostItem Name="Sheet7" Code="Sheet7.cs" CanonicalName="Sheet7" PublishedHash="338D880C1B0C769BEC9053A3DCA3F4ABA40F1166" DisplayName="Sun 26" Blueprint="Sheet7.Designer.xml" GeneratedCode="Sheet7.Designer.cs" />
           <HostItem Name="Sheet8" Code="Sheet8.cs" CanonicalName="Sheet8" PublishedHash="018B04FBF937BFF6B401C8D1B32A570F4F9F4B88" DisplayName="CHEQUES" Blueprint="Sheet8.Designer.xml" GeneratedCode="Sheet8.Designer.cs" />
-          <HostItem Name="Sheet9" Code="Sheet9.cs" CanonicalName="Sheet9" PublishedHash="14E169BC8C67EA2B4EBBE496BBF6804A55BAB83F" DisplayName="Summary 200217 - 260217" Blueprint="Sheet9.Designer.xml" GeneratedCode="Sheet9.Designer.cs" />
-          <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" PublishedHash="1D1C97AE4DDCBDBD51C778FEB4854619104743B2" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
+          <HostItem Name="Sheet9" Code="Sheet9.cs" CanonicalName="Sheet9" PublishedHash="39387AE4810A065A6524DE7E4BF5D2A5506F7BA3" DisplayName="Summary 200217 - 260217" Blueprint="Sheet9.Designer.xml" GeneratedCode="Sheet9.Designer.cs" />
+          <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" PublishedHash="007213D19C8B9204805D0B73E2153F43F2154F71" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
         </Host>
       </FlavorProperties>
     </VisualStudio>

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using WeekEnding;
 
 namespace WeekEndingTabs
@@ -8,6 +9,8 @@ namespace WeekEndingTabs
     {
         string DisplayTaggedSheets ();
         string DisplayDates ();
+        void Refresh();
+        void Log(string message);
     }
 
     [ComVisible(true)]
@@ -15,13 +18,18 @@ namespace WeekEndingTabs
     public class QueryWeekending : IWeekending
     {
         private readonly WeekEnding.WeekEnding _we;
-
         public WeekEnding.WeekEnding We =>
-            _we == null ? Globals.ThisWorkbook?.WeekEnding : _we;
+            _we ?? Globals.ThisWorkbook?.WeekEnding;
 
-        public QueryWeekending ()
+        public QueryWeekending (WeekEnding.WeekEnding we)
         {
-            _we = Globals.ThisWorkbook?.WeekEnding;
+            _we = we;
+            We?.Log("QueryWeekending: Startup");
+        }
+
+        ~QueryWeekending()
+        {
+            We?.Log("QueryWeekending: Shutdown");
         }
         string IWeekending.DisplayTaggedSheets ()
         {
@@ -31,11 +39,22 @@ namespace WeekEndingTabs
         {
             return We.DisplayDates();
         }
+
+        void IWeekending.Refresh ()
+        {
+            We.Refresh();
+        }
+
+        void IWeekending.Log (string message)
+        {
+            We?.Log(message);
+        }
     }
 
     public partial class ThisWorkbook
     {
         public WeekEnding.WeekEnding WeekEnding;
+        private QueryWeekending _qwe;
 
         private void ThisWorkbook_Startup (object sender, System.EventArgs e)
         {
@@ -48,7 +67,7 @@ namespace WeekEndingTabs
 
         protected override object GetAutomationObject ()
         {
-            return new QueryWeekending();
+            return _qwe ?? (_qwe = new QueryWeekending(WeekEnding));
         }
 
         #region VSTO Designer generated code

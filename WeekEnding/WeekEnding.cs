@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms.VisualStyles;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools;
 using Worksheet = Microsoft.Office.Tools.Excel.Worksheet;
@@ -17,21 +18,38 @@ namespace WeekEnding
 		private bool _guard;
 		private DateTime[] _dates;
 		private Dictionary<string, Worksheet> _taggedSheets;
+	    private readonly Excel.Worksheet _configSheet;
 
-		public WeekEnding(Microsoft.Office.Tools.Excel.WorkbookBase wb, Factory factory)
+        public WeekEnding(Microsoft.Office.Tools.Excel.WorkbookBase wb, Factory factory)
 		{
 			_wb = wb;
 			_factory = factory;
-			var configSheet = (Excel.Worksheet) wb.Sheets["config"];
-			if (configSheet == null) return;
-			((DocEvents_Event) configSheet).Calculate += Refresh;
+			_configSheet = (Excel.Worksheet) wb.Sheets["config"];
+            Log("WeekEnding: " + _configSheet?.Name ?? "configSheet not set");
+			if (_configSheet == null) return;
+			((DocEvents_Event) _configSheet).Calculate += Refresh;
+		    _wb.Open += Refresh;
 		}
+	    ~WeekEnding()
+	    {
+	        Log("WeekEnding: Shutdown");
+	    }
+	    public void Log(string message)
+	    {
+	        try
+	        {
+	            _wb.Application.Run("Log", message);
+	        }
+	        catch (Exception e)
+	        {
+	            Console.WriteLine(">>>>>>>>>>>>>>{0}",e);
+	        }
+	    }
 		public void Refresh()
 		{
 			var updating = _wb.Application.ScreenUpdating;
 			_wb.Application.ScreenUpdating = false;
-			_update();
-            _wb.Application.Run("printState");
+            _update();
 			if(updating)
 				_wb.Application.ScreenUpdating = true;
 		}
