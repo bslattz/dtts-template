@@ -21,7 +21,7 @@
     <PublishUrl>C:\Users\Admin\Dropbox\Linda\addin\</PublishUrl>
     <InstallUrl>\\ADMIN-PC\addin\</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.13</ApplicationVersion>
+    <ApplicationVersion>1.0.0.36</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -50,6 +50,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>false</RegisterForComInterop>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -59,16 +61,32 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>VSTO40</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
   -->
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -178,6 +196,7 @@
     <Compile Include="ThisWorkbook.Designer.cs">
       <DependentUpon>ThisWorkbook.Designer.xml</DependentUpon>
     </Compile>
+    <Content Include="Module1.bas" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -188,10 +207,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sheet11.resx">
+      <DependentUpon>Sheet11.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThisWorkbook.resx">
       <DependentUpon>ThisWorkbook.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <Content Include="Data\DTTS TEMPLATE AUTO.XP.xlt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="DTTS TEMPLATE AUTO.XP.xlt" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -201,6 +228,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WeekendingTabs.NET.4.0_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ThisWorkbook.Designer.xml">
@@ -268,11 +296,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FileCopyPDA\FileCopyPDA.csproj">
+      <Project>{1b51127e-460d-4d1c-bed0-c926c509e45e}</Project>
+      <Name>FileCopyPDA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeekEnding\WeekEnding.csproj">
       <Project>{0b7626be-8862-4138-9fb5-d47b3153ffdb}</Project>
       <Name>WeekEnding</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -299,7 +332,7 @@
           <HostItem Name="Chart1" Code="Chart1.cs" CanonicalName="Chart1" PublishedHash="D92C43DB724F51EACC93F705D3484732D9560356" DisplayName="Chart1" Blueprint="Chart1.Designer.xml" GeneratedCode="Chart1.Designer.cs" />
           <HostItem Name="Sheet1" Code="Sheet1.cs" CanonicalName="Sheet1" PublishedHash="133607574DE181B858B5E65C784C45A070A55F61" DisplayName="Mon 20" Blueprint="Sheet1.Designer.xml" GeneratedCode="Sheet1.Designer.cs" />
           <HostItem Name="Sheet10" Code="Sheet10.cs" CanonicalName="Sheet10" PublishedHash="B2E41A99F387254A02A60D466B5C9BC52DF08FD2" DisplayName="DAILY TOTALS" Blueprint="Sheet10.Designer.xml" GeneratedCode="Sheet10.Designer.cs" />
-          <HostItem Name="Sheet11" Code="Sheet11.cs" CanonicalName="Sheet11" PublishedHash="FCEF60ED06D10F0F69883827C9ED1C76676E4072" DisplayName="config" Blueprint="Sheet11.Designer.xml" GeneratedCode="Sheet11.Designer.cs" />
+          <HostItem Name="Sheet11" Code="Sheet11.cs" CanonicalName="Sheet11" PublishedHash="F23CF00147AAF631A4093A42CC298FC968AF2BAE" DisplayName="config" Blueprint="Sheet11.Designer.xml" GeneratedCode="Sheet11.Designer.cs" />
           <HostItem Name="Sheet2" Code="Sheet2.cs" CanonicalName="Sheet2" PublishedHash="E214BD2298C4C0554DDC8762B4EDCB829B3085B3" DisplayName="Tue 21" Blueprint="Sheet2.Designer.xml" GeneratedCode="Sheet2.Designer.cs" />
           <HostItem Name="Sheet3" Code="Sheet3.cs" CanonicalName="Sheet3" PublishedHash="5E3C39AED794A225BB528E8DFA0E77C85970DAE4" DisplayName="Wed 22" Blueprint="Sheet3.Designer.xml" GeneratedCode="Sheet3.Designer.cs" />
           <HostItem Name="Sheet4" Code="Sheet4.cs" CanonicalName="Sheet4" PublishedHash="4E887E91F5552BCAE814EF4A17A3696E4D33B463" DisplayName="Thu 23" Blueprint="Sheet4.Designer.xml" GeneratedCode="Sheet4.Designer.cs" />

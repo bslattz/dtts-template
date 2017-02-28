@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms.VisualStyles;
+using System.Windows;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Tools;
+using Microsoft.Vbe.Interop;
+using Microsoft.VisualStudio.Tools.Applications;
 using Worksheet = Microsoft.Office.Tools.Excel.Worksheet;
 using Factory = Microsoft.Office.Tools.Excel.Factory;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -18,7 +20,7 @@ namespace WeekEnding
 		private bool _guard;
 		private DateTime[] _dates;
 		private Dictionary<string, Worksheet> _taggedSheets;
-	    private readonly Excel.Worksheet _configSheet;
+	    private readonly Excel.Worksheet _configSheet;  //keep COM ref count
 
         public WeekEnding(Microsoft.Office.Tools.Excel.WorkbookBase wb, Factory factory)
 		{
@@ -29,6 +31,7 @@ namespace WeekEnding
 			if (_configSheet == null) return;
 			((DocEvents_Event) _configSheet).Calculate += Refresh;
 		    _wb.Open += Refresh;
+		    _wb.BeforeSave += WB_BeforeSave;
 		}
 	    ~WeekEnding()
 	    {
@@ -45,12 +48,24 @@ namespace WeekEnding
 	            Console.WriteLine(">>>>>>>>>>>>>>{0}",e);
 	        }
 	    }
-		public void Refresh()
+        public void Run (string macro, params object[] args)
+        {
+            try
+            {
+                RunImpl.Run(_wb.Application, macro, args);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(">>>>>>>>>>>>>>{0}", e);
+            }
+        }
+        public void Refresh()
 		{
 			var updating = _wb.Application.ScreenUpdating;
 			_wb.Application.ScreenUpdating = false;
             _update();
-			if(updating)
+            Run("printState", "Refresed", _guard);
+            if (updating)
 				_wb.Application.ScreenUpdating = true;
 		}
 		private void _update ()
@@ -111,7 +126,31 @@ namespace WeekEnding
 
 			actSht?.Activate();
 		}
+	    public void WB_BeforeSave(bool saveAsUI, ref bool cancel)
+	    {
+            if (!saveAsUI) return;
+	        var vbaProject = _wb.VBProject;
+            var components = vbaProject.VBComponents;
+	        MessageBox.Show($"Stripping macro {saveAsUI}\nModules count: {components.Count}");
+	        var names = new List<string>();
+            foreach (VBComponent component in components)
+            {
+                names.Add(component.Name);
 
+                try
+                {
+                    if(component.Name.StartsWith("VSTO"))
+                        components.Remove(component);
+
+                }
+                catch (Exception e)
+                {
+                    names[names.Count - 1] += " : FAILED";
+                }
+            }
+	        MessageBox.Show($"modules count: {components.Count}\n{String.Join<string>("\n",names)}");
+            _wb.RemoveCustomization();
+        }
 		public string DisplayTaggedSheets ()
 		{
             if (_taggedSheets == null) return null;
@@ -170,4 +209,24 @@ namespace WeekEnding
 			return ret;
 		}
 	}
+
+    static class RunImpl
+    {
+        public static object Run(Excel.Application app, string macro, params object[] args)
+        {
+            switch (args.Length)
+            {
+                case 0:
+                    return app.Run(macro);
+                case 1:
+                    return app.Run(macro, args[0]);
+                case 2:
+                    return app.Run(macro, args[0], args[1]);
+                case 3:
+                    return app.Run(macro, args[0], args[1], args[3]);
+                default:
+                    return app.Run(macro);
+            }
+        }
+    }
 }
