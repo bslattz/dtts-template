@@ -64,7 +64,6 @@ namespace FileCopyPDA
                             .Replace(".0", "").Split('.').Last();
                     var destPath = getTemplatePath($"{officeVersion}.0", appName);
                     var destFile = System.IO.Path.Combine(destPath, file);
-                    var info = new settingsDictionary(appName);
                     switch (args.InstallationStatus)
                     {
                         case AddInInstallationStatus.InitialInstall:
@@ -77,7 +76,7 @@ namespace FileCopyPDA
                                 dataDirectory);
 
                             var title =
-                                $"Install DTTS ver {args.Version} for {info[officeVersion]}";
+                                $"Install DTTS ver {args.Version} for {_info[officeVersion]}";
                             var message =
                                 $"Add template to:\n  {destFile}?\nUpdate status: {args.InstallationStatus.ToString()}";
                             if (_messageBox.Show(new Form { TopMost = true },
@@ -117,59 +116,19 @@ namespace FileCopyPDA
             var destPathApp = app.TemplatesPath;
             app.Quit();
 
-            var destPath = Services
-                .FindKey(Registry.CurrentUser,
-                    new List<string> {"SOFTWARE", "Microsoft", "Office", ver, appName, "Options"})
-                    .GetValue("PersonalTemplates") as string;
-
-            var message = $"From the App:\n  {destPathApp}" +
-                $"\nFrom the Registry:\n  {destPath}";
-
-            _messageBox.Show(message, "Default User Template Path");
-
-            return destPathApp ?? destPath;
+            return destPathApp;
         }
-        class settingsDictionary
+        private readonly Dictionary<string, string> _info = new Dictionary<string, string>
         {
-            public struct OfficeSettings
-            {
-                public string Name;
-                public string PersonalTemplatesRegPath;
-                public string UserTemplatesRegPath;
-
-                private const string path =
-                    @"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\{VER}\{APPLICATION}\Options";
-
-                public OfficeSettings (string name, string personal, string user)
-                {
-                    Name = name;
-                    PersonalTemplatesRegPath = personal;
-                    UserTemplatesRegPath = user;
-                }
-            }
-
-            private string _application;
-
-            public settingsDictionary(string application)
-            {
-                _application = application;
-            }
-
-            private string transform (string s, int i) => 
-                s.Replace("{VER}", i.ToString()).Replace("{APPLICATION}", _application);
-            public string this[string key] => _officeVer[key];
-            private readonly Dictionary<string, string> _officeVer = new Dictionary<string, string>
-            {
-                { "7", "Office 97" },
-                { "8", "Office 98" },
-                { "9", "Office 2000" },
-                { "10", "Office XP" },
-                { "11", "Office 2003" },
-                { "12", "Office 2007" },
-                { "14", "Office 2010" },
-                { "15", "Office 2013" },
-                { "16", "Office 2016" }
-            };
-        }
+            { "7", "Office 97" },
+            { "8", "Office 98" },
+            { "9", "Office 2000" },
+            { "10", "Office XP" },
+            { "11", "Office 2003" },
+            { "12", "Office 2007" },
+            { "14", "Office 2010" },
+            { "15", "Office 2013" },
+            { "16", "Office 2016" }
+        };
     }
 }

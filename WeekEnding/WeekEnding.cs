@@ -131,7 +131,6 @@ namespace WeekEnding
             if (!saveAsUI) return;
 	        var vbaProject = _wb.VBProject;
             var components = vbaProject.VBComponents;
-	        MessageBox.Show($"Stripping macro {saveAsUI}\nModules count: {components.Count}");
 	        var names = new List<string>();
             foreach (VBComponent component in components)
             {
@@ -148,7 +147,6 @@ namespace WeekEnding
                     names[names.Count - 1] += " : FAILED";
                 }
             }
-	        MessageBox.Show($"modules count: {components.Count}\n{String.Join<string>("\n",names)}");
             _wb.RemoveCustomization();
         }
 		public string DisplayTaggedSheets ()

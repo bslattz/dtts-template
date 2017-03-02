@@ -21,7 +21,7 @@
     <PublishUrl>C:\Users\Admin\Dropbox\Linda\addin\</PublishUrl>
     <InstallUrl>\\ADMIN-PC\addin\</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.40</ApplicationVersion>
+    <ApplicationVersion>1.0.0.41</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
