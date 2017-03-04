@@ -187,7 +187,6 @@ namespace WeekEnding
 			}
 		}
 	}
-
 	public static class ExcelExtensions
 	{
 		public static T[] ToArray<T> (this Range range)
@@ -202,7 +201,6 @@ namespace WeekEnding
 				{
 					ret[col] = (T)(typeof(T) == typeof(DateTime) ? DateTime.FromOADate(r[row + 1, col + 1]) : r[row + 1, col + 1]);
 				}
-				
 			}
 			return ret;
 		}

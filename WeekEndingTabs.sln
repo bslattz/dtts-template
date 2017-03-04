@@ -5,11 +5,6 @@ VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekEndingTabs", "WeekEndingTabs\WeekEndingTabs.csproj", "{6F9F51C9-6439-4AED-B928-AC38D92699C8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA605903-43A5-47CF-8338-CCE5D285CB99}"
-	ProjectSection(SolutionItems) = preProject
-		AdminBase64.cer = AdminBase64.cer
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekEnding", "WeekEnding\WeekEnding.csproj", "{0B7626BE-8862-4138-9FB5-D47B3153FFDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCopyPDA", "FileCopyPDA\FileCopyPDA.csproj", "{1B51127E-460D-4D1C-BED0-C926C509E45E}"

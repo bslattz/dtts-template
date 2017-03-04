@@ -21,7 +21,7 @@
     <PublishUrl>C:\Users\Admin\Dropbox\Linda\addin\</PublishUrl>
     <InstallUrl>\\ADMIN-PC\addin\</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.41</ApplicationVersion>
+    <ApplicationVersion>1.0.0.56</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -206,6 +206,7 @@
     <Content Include="Data\DTTS TEMPLATE AUTO.XP.xlt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="AdminBase64.cer" />
     <None Include="DTTS TEMPLATE AUTO.XP.xlt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -216,6 +217,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Trust.bat" />
     <None Include="WeekendingTabs.NET.4.0_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -296,22 +298,24 @@
   <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!--<VSToolsPath>C:\Users\Admin\Documents\Visual Studio 2017\Projects\WeekEndingTabs\WeekEndingTabs</VSToolsPath>-->
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D7964E4B1601A307D06A126AF702E4A32DF3C5EC</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>5B91ECDF612608D65E621C25BD7006642E17A5D0</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>WeekEndingTabs_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>WeekendingTabs.NET.4.0_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project=".\OfficeTools\PostAction.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
@@ -342,4 +346,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <!--<Target Name="AfterPublish">
+    <Message Text="After Publish &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" />
+  </Target>
+  <Target Name="DisplayMessages" AfterTargets="PublishOnly">
+    <Message Text="After PublishOnly in project.csproj&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" />
+  </Target>-->
 </Project>
