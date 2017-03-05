@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="Windows-1252"?>
-<!--
-***********************************************************************************************
-Microsoft.VisualStudio.Tools.Office.targets
-
-WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
-created a backup copy.  Incorrect changes to this file will make it
-impossible to load or build your projects from the command-line or the IDE.
-
-This file defines the steps in the standard build process specific for Visual Studio Tools for 
-Office projects.
-
-Copyright (C) Microsoft Corporation. All rights reserved.
-***********************************************************************************************
--->
 
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Target Name="AddPostAction" AfterTargets="PublishOnly">
+  <Target Name="EstablishLogDir" Condition="!Exists('$(MSBuildProjectDirectory)\Logs')">
+    <!--<MakeDir Directories="$(MSBuildProjectDirectory).Replace('\','\\')\\Logs"/>-->
+    <Message Text="$(MSBuildProjectDirectory)\Logs >>>>>>>>>>>MAKING>>>>>>>>>>>>>>>>>>>>>>>>"/>
+    <MakeDir Directories=".\Logs"/>
+  </Target>
+
+  <Target Name="AddPostAction" AfterTargets="BeforePublish" DependsOnTargets="EstablishLogDir">
+
+    <Message Text="TemporaryVersionFolderWithPath----->$(TemporaryVersionFolderWithPath)"/>
+    <Message Text="PublishDir----->$(PublishDir)"/>
+    <Message Text="DeploymentManifestFileName----->$(DeploymentManifestFileName)"/>
+    <Message Text="\$(TemporaryVersionFolderWithPath)\$(ApplicationManifestFileName)----->'$(TemporaryVersionFolderWithPath)$(ApplicationManifestFileName)'"/>
     <PropertyGroup>
       <PowerShellExe Condition=" '$(PowerShellExe)'=='' ">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
-      <ScriptLocation Condition=" '$(ScriptLocation)'=='' ">C:\Users\Admin\Documents\GitHub\powershell-scripts\postAction.ps1</ScriptLocation>
+      <ScriptPath Condition=" '$(ScriptPath)'=='' ">C:\Users\Admin\Documents\GitHub\powershell-scripts\postAction-MSBuild.ps1</ScriptPath>
+      <Switches>-NonInteractive -executionpolicy Unrestricted</Switches>
       <PostAction>FileCopyPDA.FileCopyPDA</PostAction>
+      <Arguments>&quot;&amp; { &amp;&apos;$(ScriptPath)&apos; &apos;$(PostAction)&apos; $(Configuration)} &quot;</Arguments>
+      <LogFile >PostAction.log</LogFile>
+      <LogFile Condition="Exists('$(MSBuildProjectDirectory)\Logs')">.\Logs\$(LogFile)</LogFile>
     </PropertyGroup>
-    <Exec Command="$(PowerShellExe) -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { &amp;&apos;$(ScriptLocation)&apos;&#x20;&apos;$(PostAction)&apos; } &quot;&gt; echo" />
+    <Exec Command="$(PowerShellExe) $(Switches) -command $(Arguments) &gt; $(LogFile)" />
   </Target>
 
 </Project>

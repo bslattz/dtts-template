@@ -21,7 +21,7 @@
     <PublishUrl>C:\Users\Admin\Dropbox\Linda\addin\</PublishUrl>
     <InstallUrl>\\ADMIN-PC\addin\</InstallUrl>
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.56</ApplicationVersion>
+    <ApplicationVersion>1.0.0.68</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -295,10 +295,11 @@
       <Name>WeekEnding</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <!--<VSToolsPath>C:\Users\Admin\Documents\Visual Studio 2017\Projects\WeekEndingTabs\WeekEndingTabs</VSToolsPath>-->
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
@@ -346,10 +347,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <!--<Target Name="AfterPublish">
-    <Message Text="After Publish &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" />
-  </Target>
-  <Target Name="DisplayMessages" AfterTargets="PublishOnly">
-    <Message Text="After PublishOnly in project.csproj&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" />
-  </Target>-->
 </Project>
